@@ -1,0 +1,44 @@
+		<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+		<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+		<meta name="rating" content="<{$xoops_meta_rating}>" />
+		<meta name="author" content="<{$xoops_meta_author}>" />
+		<meta name="copyright" content="<{$xoops_meta_copyright}>" />
+		<meta name="generator" content="XOOPS" />
+		<meta name="robots" content="<{$xoops_meta_robots}>" />
+		<meta name="keywords" content="<{php}>
+			$search = array(' with ', ' and ', ' the ', ' there ', ' their ', ' they\'re ', ' are ', ' to ', ' when ', ' on ', ' by ', ' you ',' ','.','<','>','"',';',':','}','{','[',']','|','\\','/','=','+','-','_',')','(','*','&','^','%','$','#','@','!','~','`');
+			$minimumwordlen = 3;		
+			// Gets Meta Data
+			$path = str_replace($search, ',', str_replace(basename($_SERVER['REQUEST_URI']), '', $_SERVER['REQUEST_URI']));
+			$sitename = htmlspecialchars_decode($this->_tpl_vars['xoops_sitename']);
+			$slogon = htmlspecialchars_decode($this->_tpl_vars['xoops_slogan']);
+			$pagetitle = htmlspecialchars_decode($this->_tpl_vars['xoops_pagetitle']);
+			$keywords = htmlspecialchars_decode($this->_tpl_vars['xoops_meta_keywords']);
+			$description = htmlspecialchars_decode($this->_tpl_vars['xoops_meta_description']);
+			// Makes Unique Keyword Sentence with NO KEYPHRASES - A KEY PHRASE IS AN INCORRECT USE OF THE META TAG 'KEYWORDS'
+			$nophrase = str_replace($search, ',', $path.str_replace($search, ',', $sitename).','.str_replace($search, ',', $slogon).','.str_replace($search, ',', $pagetitle).','.str_replace($search, ',', $keywords).','.str_replace($search, ',', $description));
+			$keywords = array_unique(explode(',', $nophrase));
+			foreach($keywords as $id => $word) {
+				if (strlen($word)<$minimumwordlen||is_numeric($word)) {
+					unset($keywords[$id]);
+				}
+			}
+			echo implode(', ', $keywords);<{/php}>" />
+		<meta property="og:title" content="<{if $xoops_pagetitle !=''}><{$xoops_pagetitle}> :: <{/if}><{$xoops_sitename}>"/>
+		<meta property="og:type" content="html"/>
+		<meta property="og:image" content="<{$xoops_url}>/images/logo.png"/>
+		<meta property="og:url" content="<{php}>echo (isset($_SERVER["HTTPS"])?"https://":"http://").$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]; <{/php}>" />
+		<meta property="og:site_name" content="<{$xoops_sitename}>"/>
+		<title><{if $xoops_pagetitle !=''}><{$xoops_pagetitle}> :: <{/if}><{$xoops_sitename}></title>
+<{if $xoops_dirname eq 'system'}>
+		<meta name="description" content="<{$xoops_meta_description}>" />
+<{/if}>
+		<link rel="shortcut icon" type="image/ico" href="<{$xoops_url}>/themes/<{$theme_name}>/favicon.ico" />
+		<link rel="icon" type="image/png" href="<{$xoops_url}>/themes/<{$theme_name}>/icon-48x48.png" />
+		<link rel="apple-touch-icon" href="<{$xoops_url}>/themes/<{$theme_name}>/icon-56x56.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="<{$xoops_url}>/themes/<{$theme_name}>/icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="<{$xoops_url}>/themes/<{$theme_name}>/icon-114x114.png">
+		<link rel="stylesheet" type="text/css" media="screen" href="<{$xoops_url}>/xoops.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="<{$xoops_themecss}>" />
+		<link href="http://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+		

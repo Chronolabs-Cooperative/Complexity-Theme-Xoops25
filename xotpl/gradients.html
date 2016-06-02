@@ -1,0 +1,192 @@
+	<style>
+	<{php}>
+	    
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    
+	    $modes = array(	'one'=>array('a'=>'center, ellipse', 'b'=>'radial, center center'),
+	    		'two'=>array('a'=>'-45deg', 'b'=>'left top, right bottom'),
+	    		'three'=>array('a'=>'45deg', 'b'=>'left bottom, right top'),
+	    		'four'=>array('a'=>'top', 'b'=>'left top, left bottom'),
+	    		'five'=>array('a'=>'left', 'b'=>'left top, right top'));
+	    
+	    $modeskeys = array('one','two','three','four','five');
+	    
+	    $colour = array();
+	    foreach(array('one', 'two', 'three', 'four') as $key) {
+	    	$colour[$key]['red'] = mt_rand(_COMPLEXITY_GRADIENT_ALPHA_RED_LOW, _COMPLEXITY_GRADIENT_ALPHA_RED_HIGH);
+	    	$colour[$key]['green'] = mt_rand(_COMPLEXITY_GRADIENT_ALPHA_GREEN_LOW, _COMPLEXITY_GRADIENT_ALPHA_GREEN_HIGH);
+	    	$colour[$key]['blue'] = mt_rand(_COMPLEXITY_GRADIENT_ALPHA_BLUE_LOW, _COMPLEXITY_GRADIENT_ALPHA_BLUE_HIGH);
+	    	if (in_array($key, array('one')))
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_ALPHA_HEATONE_LOW, _COMPLEXITY_GRADIENT_ALPHA_HEATONE_HIGH);
+	    	else
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_ALPHA_HEATOTHER_LOW, _COMPLEXITY_GRADIENT_ALPHA_HEATOTHER_HIGH);
+	    	$colour[$key]['opacity'] = (string)round(mt_rand(_COMPLEXITY_GRADIENT_ALPHA_OPACITY_LOW, _COMPLEXITY_GRADIENT_ALPHA_OPACITY_HIGH) / 100, 2);
+	    }
+	    shuffle($modeskeys);
+	    $state = $modes[$modeskeys[mt_rand(0, count($modekeys)-1)]];
+	
+echo _COMPLEXITY_GRADIENT_ALPHA_ELEMENTS .' {
+	        background: rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].');
+	        background: -moz-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -webkit-gradient('.$state['b'].', color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')), color-stop('.$colour['two']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].')), color-stop('.$colour['three']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].')), color-stop('.$colour['four']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].')), color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')));
+	        background: -webkit-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -o-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -ms-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#ffffff\', endColorstr=\'#ffffff\', GradientType=1 );
+	    }
+	';
+	
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    
+	    $modes = array(	'one'=>array('a'=>'center, ellipse', 'b'=>'radial, center center'),
+	    		'two'=>array('a'=>'-45deg', 'b'=>'left top, right bottom'),
+	    		'three'=>array('a'=>'45deg', 'b'=>'left bottom, right top'),
+	    		'four'=>array('a'=>'top', 'b'=>'left top, left bottom'),
+	    		'five'=>array('a'=>'left', 'b'=>'left top, right top'));
+	    
+	    $modeskeys = array('one','two','three','four','five');
+	    
+	    $colour = array();
+	    foreach(array('one', 'two', 'three', 'four') as $key) {
+	    	$colour[$key]['red'] = mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_RED_LOW, _COMPLEXITY_GRADIENT_FOXTROT_RED_HIGH);
+	    	$colour[$key]['green'] = mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_GREEN_LOW, _COMPLEXITY_GRADIENT_FOXTROT_GREEN_HIGH);
+	    	$colour[$key]['blue'] = mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_BLUE_LOW, _COMPLEXITY_GRADIENT_FOXTROT_BLUE_HIGH);
+	    	if (in_array($key, array('one')))
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_HEATONE_LOW, _COMPLEXITY_GRADIENT_FOXTROT_HEATONE_HIGH);
+	    	else
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_HEATOTHER_LOW, _COMPLEXITY_GRADIENT_FOXTROT_HEATOTHER_HIGH);
+	    	$colour[$key]['opacity'] = (string)round(mt_rand(_COMPLEXITY_GRADIENT_FOXTROT_OPACITY_LOW, _COMPLEXITY_GRADIENT_FOXTROT_OPACITY_HIGH) / 100, 2);
+	    }
+	    shuffle($modeskeys);
+	    $state = $modes[$modeskeys[mt_rand(0, count($modekeys)-1)]];
+	
+echo _COMPLEXITY_GRADIENT_FOXTROT_ELEMENTS .' {
+	        background: rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].');
+	        background: -moz-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -webkit-gradient('.$state['b'].', color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')), color-stop('.$colour['two']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].')), color-stop('.$colour['three']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].')), color-stop('.$colour['four']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].')), color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')));
+	        background: -webkit-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -o-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -ms-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#ffffff\', endColorstr=\'#ffffff\', GradientType=1 );
+	    }
+	';    
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    
+	    $modes = array(	'one'=>array('a'=>'center, ellipse', 'b'=>'radial, center center'),
+	    		'two'=>array('a'=>'-45deg', 'b'=>'left top, right bottom'),
+	    		'three'=>array('a'=>'45deg', 'b'=>'left bottom, right top'),
+	    		'four'=>array('a'=>'top', 'b'=>'left top, left bottom'),
+	    		'five'=>array('a'=>'left', 'b'=>'left top, right top'));
+	    
+	    $modeskeys = array('one','two','three','four','five');
+	    
+	    $colour = array();
+	    foreach(array('one', 'two', 'three', 'four') as $key) {
+	    	$colour[$key]['red'] = mt_rand(_COMPLEXITY_GRADIENT_DELTA_RED_LOW, _COMPLEXITY_GRADIENT_DELTA_RED_HIGH);
+	    	$colour[$key]['green'] = mt_rand(_COMPLEXITY_GRADIENT_DELTA_GREEN_LOW, _COMPLEXITY_GRADIENT_DELTA_GREEN_HIGH);
+	    	$colour[$key]['blue'] = mt_rand(_COMPLEXITY_GRADIENT_DELTA_BLUE_LOW, _COMPLEXITY_GRADIENT_DELTA_BLUE_HIGH);
+	    	if (in_array($key, array('one')))
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_DELTA_HEATONE_LOW, _COMPLEXITY_GRADIENT_DELTA_HEATONE_HIGH);
+	    	else
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_DELTA_HEATOTHER_LOW, _COMPLEXITY_GRADIENT_DELTA_HEATOTHER_HIGH);
+	    	$colour[$key]['opacity'] = (string)round(mt_rand(_COMPLEXITY_GRADIENT_DELTA_OPACITY_LOW, _COMPLEXITY_GRADIENT_DELTA_OPACITY_HIGH) / 100, 2);
+	    }
+	    shuffle($modeskeys);
+	    $state = $modes[$modeskeys[mt_rand(0, count($modekeys)-1)]];
+	
+	echo _COMPLEXITY_GRADIENT_DELTA_ELEMENTS .' {
+	        background: rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].');
+	        background: -moz-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -webkit-gradient('.$state['b'].', color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')), color-stop('.$colour['two']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].')), color-stop('.$colour['three']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].')), color-stop('.$colour['four']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].')), color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')));
+	        background: -webkit-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -o-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -ms-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#ffffff\', endColorstr=\'#ffffff\', GradientType=1 );
+	    }
+	';
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    
+	    $modes = array(	'one'=>array('a'=>'center, ellipse', 'b'=>'radial, center center'),
+	    		'two'=>array('a'=>'-45deg', 'b'=>'left top, right bottom'),
+	    		'three'=>array('a'=>'45deg', 'b'=>'left bottom, right top'),
+	    		'four'=>array('a'=>'top', 'b'=>'left top, left bottom'),
+	    		'five'=>array('a'=>'left', 'b'=>'left top, right top'));
+	    
+	    $modeskeys = array('one','two','three','four','five');
+	    
+	    $colour = array();
+	    foreach(array('one', 'two', 'three', 'four') as $key) {
+	    	$colour[$key]['red'] = mt_rand(_COMPLEXITY_GRADIENT_GAMMA_RED_LOW, _COMPLEXITY_GRADIENT_GAMMA_RED_HIGH);
+	    	$colour[$key]['green'] = mt_rand(_COMPLEXITY_GRADIENT_GAMMA_GREEN_LOW, _COMPLEXITY_GRADIENT_GAMMA_GREEN_HIGH);
+	    	$colour[$key]['blue'] = mt_rand(_COMPLEXITY_GRADIENT_GAMMA_BLUE_LOW, _COMPLEXITY_GRADIENT_GAMMA_BLUE_HIGH);
+	    	if (in_array($key, array('one')))
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_GAMMA_HEATONE_LOW, _COMPLEXITY_GRADIENT_GAMMA_HEATONE_HIGH);
+	    	else
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_GAMMA_HEATOTHER_LOW, _COMPLEXITY_GRADIENT_GAMMA_HEATOTHER_HIGH);
+	    	$colour[$key]['opacity'] = (string)round(mt_rand(_COMPLEXITY_GRADIENT_GAMMA_OPACITY_LOW, _COMPLEXITY_GRADIENT_GAMMA_OPACITY_HIGH) / 100, 2);
+	    }
+	    shuffle($modeskeys);
+	    $state = $modes[$modeskeys[mt_rand(0, count($modekeys)-1)]];
+	
+	echo _COMPLEXITY_GRADIENT_GAMMA_ELEMENTS .'  {
+	        background: rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].');
+	        background: -moz-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -webkit-gradient('.$state['b'].', color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')), color-stop('.$colour['two']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].')), color-stop('.$colour['three']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].')), color-stop('.$colour['four']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].')), color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')));
+	        background: -webkit-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -o-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -ms-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#ffffff\', endColorstr=\'#ffffff\', GradientType=1 );
+	    }
+	';
+	
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    mt_srand(mt_rand(-microtime(true), microtime(true)));
+	    
+	    $modes = array(	'one'=>array('a'=>'center, ellipse', 'b'=>'radial, center center'),
+	    		'two'=>array('a'=>'-45deg', 'b'=>'left top, right bottom'),
+	    		'three'=>array('a'=>'45deg', 'b'=>'left bottom, right top'),
+	    		'four'=>array('a'=>'top', 'b'=>'left top, left bottom'),
+	    		'five'=>array('a'=>'left', 'b'=>'left top, right top'));
+	    
+	    $modeskeys = array('one','two','three','four','five');
+	    
+	    $colour = array();
+	    foreach(array('one', 'two', 'three', 'four') as $key) {
+	    	$colour[$key]['red'] = mt_rand(_COMPLEXITY_GRADIENT_OMEGA_RED_LOW, _COMPLEXITY_GRADIENT_OMEGA_RED_HIGH);
+	    	$colour[$key]['green'] = mt_rand(_COMPLEXITY_GRADIENT_OMEGA_GREEN_LOW, _COMPLEXITY_GRADIENT_OMEGA_GREEN_HIGH);
+	    	$colour[$key]['blue'] = mt_rand(_COMPLEXITY_GRADIENT_OMEGA_BLUE_LOW, _COMPLEXITY_GRADIENT_OMEGA_BLUE_HIGH);
+	    	if (in_array($key, array('one')))
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_OMEGA_HEATONE_LOW, _COMPLEXITY_GRADIENT_OMEGA_HEATONE_HIGH);
+	    	else
+	    		$colour[$key]['heat'] = mt_rand(_COMPLEXITY_GRADIENT_OMEGA_HEATOTHER_LOW, _COMPLEXITY_GRADIENT_OMEGA_HEATOTHER_HIGH);
+	    	$colour[$key]['opacity'] = (string)round(mt_rand(_COMPLEXITY_GRADIENT_OMEGA_OPACITY_LOW, _COMPLEXITY_GRADIENT_OMEGA_OPACITY_HIGH) / 100, 2);
+	    }
+	    shuffle($modeskeys);
+	    $state = $modes[$modeskeys[mt_rand(0, count($modekeys)-1)]];
+	
+	echo _COMPLEXITY_GRADIENT_OMEGA_ELEMENTS .'  {
+	        background: rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].');
+	        background: -moz-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -webkit-gradient('.$state['b'].', color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')), color-stop('.$colour['two']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].')), color-stop('.$colour['three']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].')), color-stop('.$colour['four']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].')), color-stop('.$colour['one']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].')));
+	        background: -webkit-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -o-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: -ms-linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        background: linear-gradient('.$state['a'].', rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%, rgba('.$colour['two']['red'].','.$colour['two']['green'].','.$colour['two']['blue'].','.$colour['two']['opacity'].') '.$colour['two']['heat'].'%, rgba('.$colour['three']['red'].','.$colour['three']['green'].','.$colour['three']['blue'].','.$colour['three']['opacity'].') '.$colour['three']['heat'].'%, rgba('.$colour['four']['red'].','.$colour['four']['green'].','.$colour['four']['blue'].','.$colour['four']['opacity'].') '.$colour['four']['heat'].'%, rgba('.$colour['one']['red'].','.$colour['one']['green'].','.$colour['one']['blue'].','.$colour['one']['opacity'].') '.$colour['one']['heat'].'%);
+	        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#ffffff\', endColorstr=\'#ffffff\', GradientType=1 );
+	    }
+	';
+	<{/php}>
+	</style>

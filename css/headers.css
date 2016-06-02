@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+
+
+#header {
+	max-width: 1040px;
+	min-width: 1040px;
+	width: 990px; 
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	margin-top: -10px;
+}
+
+#headmenu {
+	color: #fff;
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	border: 2px solid #0330c0;
+	background-color: #e4187c;
+	-webkit-box-shadow: 5px 4px 9px #090909;
+	-moz-box-shadow:    5px 4px 9px #090909;
+	box-shadow:         5px 4px 9px #090909;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #e4187c;
+	width: 1036px; 
+	margin-top: 12px;
+	margin-bottom: 29px;
+	display: inline-block;
+	padding-top: 11px;
+	padding-bottom: 4px;
+}
+
+#headmenu ul
+{
+	text-shadow: -1px 3px 3px #5511d4;
+	-webkit-text-shadow: 1px 3px 3px #5511d4;
+	-moz-text-shadow: 1px 3px 3px #5511d4;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: auto;
+	padding-right: auto;
+	width: auto; 
+	display: inline-block;
+	text-align: center;
+}

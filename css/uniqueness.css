@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+
+#xoBreadcrumb
+{
+	display: none;
+	float: right !important;
+	text-shadow: 2px 1px 4px #11d00f !important;
+	font-size: 1.2933429em !important;
+	color: #020122 !important;
+	text-align: center;
+}
+
+#xoBreadcrumb a {
+	text-shadow: 4px 2px 4px #11d00f !important;
+	font-size: 1.299729em !important;
+	color: #020122 !important;
+}
+
+#xoBreadcrumb a:hover {
+	text-shadow: 2px 3px 6px #11d00f !important;
+	font-size: 1.299729em !important;
+	color: #e2dde2 !important;
+}
+
+#twitter-timeline
+{
+	margin-top: 13px !important;
+	position: relative;
+	width: 97% !important;
+	font-name: inherit !important;
+	padding: 0px !important;
+	margin-left: -4px !important;
+    text-shadow: 1px 2px 2px #000111;
+    -webkit-text-shadow: 1px 2px 2px #000111;
+	-moz-text-shadow: 1px 2px 2px #000111;
+    line-height: 0.986521em;
+    letter-spacing: 89%;
+    border-radius: 12px;
+    border: 3px solid  #0ee111;
+    box-shadow: 2px 4px 2px #0ee111;
+}

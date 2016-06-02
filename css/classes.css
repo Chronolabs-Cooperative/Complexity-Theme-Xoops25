@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+.floatleft
+{
+	float: left;
+}
+
+.floatright
+{
+	float: left;
+}
+
+.width50
+{
+	margin: 1% !important;
+	padding: 1% !important;
+	width: 46% !important;
+}

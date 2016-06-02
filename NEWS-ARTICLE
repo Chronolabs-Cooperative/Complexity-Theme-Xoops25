@@ -1,0 +1,67 @@
+[img]http:http://labs.partnerconsole.net/execute2/external/reseller-logo[/img]
+[size=medium][u][b]Chronolabs Cooperative Proudly Presents[/b][/u][/size]
+
+[size=medium][u][i]for XOOPS 2.5[/i][/u][/size]
+[size=large][u][b]Complexity Theme [i]v1.2.8[/i][/b][/u][/size]
+[img]http://sourceforge.net/p/xoops/svn/HEAD/tree/XoopsThemes/Complexity/releases/1.2.8/complexity/screenshot.jpg?format=raw[/img]
+
+[i]Demo of theme: http://2.5.xoops.themes.labs.coop/?xoops_theme_select=complexity[/i]
+
+[size=medium][b]Introduction to Complexity Theme[/b][/size]
+
+[i][u]Complexity is a complete theme, it includes features that need to be studied by theme designer to be incorporated into their theme designs including the following features:~[/u][/i]
+
+[ul][li]Social Network Meta Tags[/li][li]Anti-keyword Stuffing (SEO)[/li][li]iOS Iconographic Tags (So Icons Appear on iPhone all macintosh)[/li][li]CSS3 Gradients and Highlights[/li][li]CSS3 Rounded Edges[/li][li]CSS3 Text and Object Shadows[/li][li]Correct File Implementations[/li][li]No Jugganaut Single CSS use of @import()[/li][/ul]
+
+This theme was developed for the love of the [b]XOOPS Community[/b] and broader themery; to explain some of the features I will first go into meta tagging for facebook and third party references to the site you have to include in your meta tags the following lines, to [u]force your site logo if there is no image[/u] as well as in the [u]google index and search engines[/u] they are:-
+
+[code]
+<meta property="og:title" content=""/>
+<meta property="og:type" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:url" content="" />
+<meta property="og:site_name" content=""/>
+[/code]
+
+As well as the apple touch icon meta tags in the icons, these are in particular sizes and need to be PNG images for all touch buttons like book marks and save references in macintosh; otherwise you get the default icon, these three lines are:-
+
+[code]
+<link rel="apple-touch-icon" href="">
+<link rel="apple-touch-icon" sizes="72x72" href="">
+<link rel="apple-touch-icon" sizes="114x114" href="">
+[/code]
+
+There is also the following code in the meta keyword which stops [u]keyword stuffing[/u], that is the repeatative use of the same keywords on every page of your site this will lower you SEO Score with search engines the following code you will find in the meta template in the theme:-
+
+[code]
+<meta name="keywords" content="<{php}>
+	$search = array(' with ', ' and ', ' the ', ' there ', ' their ', ' they\'re ', ' are ', ' to ', ' when ', ' on ', ' by ', ' you ',' ','.','<','>','"',';',':','}','{','[',']','|','\\','/','=','+','-','_',')','(','*','&','^','%','$','#','@','!','~','`');
+	$minimumwordlen = 3;		
+	// Gets Meta Data
+	$path = str_replace($search, ',', str_replace(basename($_SERVER['REQUEST_URI']), '', $_SERVER['REQUEST_URI']));
+	$sitename = htmlspecialchars_decode($this->_tpl_vars['xoops_sitename']);
+	$slogon = htmlspecialchars_decode($this->_tpl_vars['xoops_slogan']);
+	$pagetitle = htmlspecialchars_decode($this->_tpl_vars['xoops_pagetitle']);
+	$keywords = htmlspecialchars_decode($this->_tpl_vars['xoops_meta_keywords']);
+	$description = htmlspecialchars_decode($this->_tpl_vars['xoops_meta_description']);
+	// Makes Unique Keyword Sentence with NO KEYPHRASES - A KEY PHRASE IS AN INCORRECT USE OF THE META TAG 'KEYWORDS' that is singlar words a KEYWORD not a sentence or phrase
+	$nophrase = str_replace($search, ',', $path.str_replace($search, ',', $sitename).','.str_replace($search, ',', $slogon).','.str_replace($search, ',', $pagetitle).','.str_replace($search, ',', $keywords).','.str_replace($search, ',', $description));
+	$keywords = array_unique(explode(',', $nophrase));
+	foreach($keywords as $id => $word) {
+		if (strlen($word)<$minimumwordlen||is_numeric($word)) {
+			unset($keywords[$id]);
+		}
+	}
+	echo implode(', ', $keywords);<{/php}>" />
+[/code]
+
+[size=medium][b]Download Complexity Theme[/b][/size]
+
+ * [url=http://sourceforge.net/projects/chronolabs/files/XOOPS%202.5/Themes/xoops2.5_theme_complexity_v1.2.8.7z/download]xoops2.5_theme_complexity_v1.2.8.7z[/url] ~ 2.8Mb
+ * [url=http://sourceforge.net/projects/chronolabs/files/XOOPS%202.5/Themes/xoops2.5_theme_complexity_v1.2.8.rar/download]xoops2.5_theme_complexity_v1.2.8.rar[/url] ~ 2.8Mb
+ * [url=http://sourceforge.net/projects/chronolabs/files/XOOPS%202.5/Themes/xoops2.5_theme_complexity_v1.2.8.tar.gz/download]xoops2.5_theme_complexity_v1.2.8.tar.gz[/url] ~ 2.8Mb
+ * [url=http://sourceforge.net/projects/chronolabs/files/XOOPS%202.5/Themes/xoops2.5_theme_complexity_v1.2.8.zip/download]xoops2.5_theme_complexity_v1.2.8.zip[/url] ~ 2.8Mb
+
+[size=medium][b]Reporting Complexity Theme Bug[/b][/size]
+
+If you do find a bug in the theme and need it fixed please used our tickets support on sourceforge at the following URL:~ http://sourceforge.net/p/chronolabs/tickets/milestone/XOOPS%20Themes/

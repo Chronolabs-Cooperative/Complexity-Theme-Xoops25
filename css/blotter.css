@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+
+#mainthing
+{
+	background: inherit !important;
+}
+
+#prewrapp, .prewrapp {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	clear: none;
+	left: 0px;
+	top: 0px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=41)";
+    filter: alpha(opacity=41);
+    -moz-opacity: 0.41;
+    -khtml-opacity: 0.41;
+    opacity: 0.41;
+    z-index: 10;
+}
+
+#preshade, .preshade {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	clear: none;
+	left: 0px;
+	top: 0px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=81)";
+    filter: alpha(opacity=81);
+    -moz-opacity: 0.81;
+    -khtml-opacity: 0.81;
+    opacity: 0.81;
+    z-index: 100;
+}
+
+#wrapper {
+	margin-top: 11px;
+	display: block;
+	width: 1098px !important;
+	min-height: 101.99%;
+	position: relative;
+	margin-bottom: 20px;
+	z-index: 400;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mainbody {
+	border-radius: 18px;
+	padding: 0px;
+	display: inline-block;
+	text-shadow: 1px 3px 3px #a0880a;
+	-webkit-text-shadow: 1px 3px 3px #a0880a;
+	-moz-text-shadow: 1px 3px 3px #a0880a;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-webkit-box-shadow: 9px 12px 19px #120021;
+	-moz-box-shadow:   9px 12px 19px #120021;
+	box-shadow:        9px 12px 19px #120021;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+	width: 1098px !important;
+	border: 5px solid #000;
+	text-align: justify !important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=81)";
+    filter: alpha(opacity=81);
+    -moz-opacity: 0.81;
+    -khtml-opacity: 0.81;
+    opacity: 0.81;
+}
+
+
+#mainback {
+	height: auto;
+}
