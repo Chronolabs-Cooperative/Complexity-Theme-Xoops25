@@ -1,20 +1,29 @@
 <{php}>
-	error_reporting(E_ALL);
-	ini_set('display_errors', true);
 	$GLOBALS['xoopsTpl']->assign("metas_template", $this->_tpl_vars["xoops_theme"]."/xotpl/metas.html");
 	$GLOBALS['xoopsTpl']->assign("scripts_template", $this->_tpl_vars["xoops_theme"]."/xotpl/scripts.html");
 	$GLOBALS['xoopsTpl']->assign("gradients_template", $this->_tpl_vars["xoops_theme"]."/xotpl/gradients.html");
 	$GLOBALS['xoopsTpl']->assign("body_template", $this->_tpl_vars["xoops_theme"]."/xotpl/body.html");
 	$GLOBALS['xoopsTpl']->assign("theme_name", basename($this->_tpl_vars["xoops_theme"]));
 	$GLOBALS['xoopsTpl']->assign("theme_path", $theme_path = XOOPS_ROOT_PATH . DIRECTORY_SEPARATOR . "themes"  . DIRECTORY_SEPARATOR . basename($this->_tpl_vars["xoops_theme"]));
-	xoops_load('XoopsLists');
-	$images = XoopsLists::getImgListAsArray($theme_path . DIRECTORY_SEPARATOR . "images"  . DIRECTORY_SEPARATOR . "backgrounds");
-	shuffle($images);
-	shuffle($images);
-	shuffle($images);
-	$GLOBALS['xoopsTpl']->assign("background_images", $images);
-	$GLOBALS['xoopsTpl']->assign("background_count", count($images)-1);
-	unset($images);
+	if (!isset($this->_tpl_vars["background_images"]) || !isset($this->_tpl_vars["background_count"]))
+	{	
+		xoops_load('XoopsLists');
+		$images = XoopsLists::getImgListAsArray($theme_path . DIRECTORY_SEPARATOR . "images"  . DIRECTORY_SEPARATOR . "backgrounds");
+		if (count($images)>_COMPLEXITY_BCKGND_IMAGES_MAX) {
+			while(count($images)>_COMPLEXITY_BCKGND_IMAGES_MAX) {
+				shuffle($images)
+				unset($images[mt_rand(0,count($images)-1)]);
+			}
+		}
+		foreach($images as $key => $image)
+			$images[$key] = XOOPS_URL . "/themes/" . $this->_tpl_vars["xoops_theme"] . "/images/backgrounds/$image";
+		shuffle($images);
+		shuffle($images);
+		shuffle($images);
+		$GLOBALS['xoopsTpl']->assign("background_images", $images);
+		$GLOBALS['xoopsTpl']->assign("background_count", count($images)-1);
+		unset($images);
+	}
 <{/php}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
@@ -24,10 +33,25 @@
 		<{includeq file="$gradients_template"}>
 		<{$xoops_module_header}>
 	</head>
-	<body id="<{$xoops_dirname}>" class="imagescroller">
-		<div class="prewrapp" id="prewrapp">&nbsp;</div>
-		<div class="preshade" id="preshade">&nbsp;</div>
-		<{includeq file="$body_template"}>
+	<body id="<{$xoops_dirname}>" class="<{$xoops_dirname}> background-tile">
+		<table>
+			<tr>
+				<td>
+					<{includeq file="$body_template"}>
+				</td>
+			</tr>
+		</table>	
+		<{if $background_count }>
+		<script>
+			$('.background-tile').bgswitcher({
+				  images: [<{foreach item=img key=id from=$background_images}>"<{$img}>"<{if $id < $background_count }>, <{/if}><{/foreach}>],
+				  loop: true,
+				  shuffle: true,
+				  interval: <{php}> echo mt_rand(_COMPLEXITY_BCKGND_INTERVAL_MIN, _COMPLEXITY_BCKGND_INTERVAL_MAX); <{/php}>,
+				  duration: <{php}> echo mt_rand(_COMPLEXITY_BCKGND_DURATION_MIN, _COMPLEXITY_BCKGND_DURATION_MAX); <{/php}>
+				});
+		</script>
+		<{/if}>
 	</body>
 </html>
 

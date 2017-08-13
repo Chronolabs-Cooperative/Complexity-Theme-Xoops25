@@ -21,6 +21,24 @@
 	clear: both;
 }
 
+#background-tile, .background-tile
+{
+  position: relative;
+  margin: 0px !important;
+  padding: 0px !important;
+  top: 0px !important;
+  left: 0px !important;
+  width: auto !important;
+  height: auto !important;
+  clear: none;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  background: no-repeat center center fixed !important; 
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+}
 
 #menuheader
 {
